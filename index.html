@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Posters - Dlex Movie</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #262531;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background-color: #1f1e2e;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #f3c614;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .navbar-menu a:hover {
+      color: #f3c614;
+    }
+
+    /* Search Bar Styles */
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    .search-bar input[type="text"] {
+      width: 60%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #f3c614;
+      color: #1f1e2e;
+      font-size: 1rem;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .search-bar button:hover {
+      background-color: #ffc107;
+    }
+
+    /* Poster Container Styles */
+    .poster-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px;
+      max-width: 100%;
+      padding: 20px;
+    }
+
+    .poster-item {
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .poster-image {
+      width: 100%;
+      max-width: 100%;
+      border: 1px solid #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    }
+
+    .poster-title {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      color: #fff;
+      position: absolute;
+      bottom: 10px;
+      left: 10%;
+      transform: translateX(-10%);
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #1f1e2e;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-section {
+      margin: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-links a {
+      color: #f3c614;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      color: #f3c614;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .poster-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .poster-container {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1440px) {
+      .poster-container {
+        grid-template-columns: repeat(7, 1fr);
+      }
+    }
+
+    @media (min-width: 1441px) {
+      .poster-container {
+        grid-template-columns: repeat(7, 1fr);
+      }
+    }
+  </style>
+<body>
+    <header>
+      <nav class="navbar">
+        <a href="#" class="navbar-brand">Dlex Movie</a>
+        <div class="navbar-menu">
+          <a href="index.html">Home</a>
+          <a href="#">Movies</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </div>
+      </nav>
+    </header>
+  
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search for movies..." oninput="debouncedSearch()">
+      <button onclick="searchPosters()">🔍 Search</button>
+    </div>
+  
+    <div class="poster-container" id="posterContainer"></div>
+  
+    <!-- Pagination Controls -->
+    <div class="pagination-controls" style="text-align: center; margin: 20px 0;">
+      <button onclick="previousPage()" id="prevButton">Previous</button>
+      <span id="pageNumber">Page 1</span>
+      <button onclick="nextPage()" id="nextButton">Next</button>
+    </div>
+  
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <p>&copy; 2025 Dlex Movie. All rights reserved.</p>
+        </div>
+        <div class="footer-section social-icons">
+          <a href="#" aria-label="Facebook">🌐</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="Instagram">📸</a>
+        </div>
+        <div class="footer-section footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </footer>
+  
+    <script>
+      let postersData = [];
+      let currentPage = 1;
+      const postersPerPage = 20;
+      let debounceTimeout;
+  
+      // JSON data fetch
+      fetch('posters.json')
+        .then(response => response.json())
+        .then(data => {
+          postersData = data;
+          displayPosters(postersData);
+        })
+        .catch(error => console.error('Error loading JSON:', error));
+  
+      // Display posters with pagination
+      function displayPosters(data) {
+        const container = document.getElementById('posterContainer');
+        container.innerHTML = '';
+        const startIndex = (currentPage - 1) * postersPerPage;
+        const endIndex = startIndex + postersPerPage;
+        const paginatedData = data.slice(startIndex, endIndex);
+  
+        paginatedData.forEach((poster) => {
+          const posterItem = document.createElement('div');
+          posterItem.classList.add('poster-item');
+  
+          posterItem.innerHTML = `
+            <a href="download.html?image=${encodeURIComponent(poster.image)}&title=${encodeURIComponent(poster.title)}&link=${encodeURIComponent(poster.link)}">
+              <img src="${poster.image}" alt="${poster.title}" class="poster-image">
+              <h1 class="poster-title">${poster.title}</h1>
+            </a>
+          `;
+  
+          container.appendChild(posterItem);
+        });
+        updatePagination();
+      }
+  
+      // Update pagination controls
+      function updatePagination() {
+        document.getElementById('pageNumber').textContent = `Page ${currentPage}`;
+        document.getElementById('prevButton').disabled = currentPage === 1;
+        document.getElementById('nextButton').disabled = currentPage * postersPerPage >= postersData.length;
+      }
+  
+      // Next and Previous button handlers
+      function nextPage() {
+        if (currentPage * postersPerPage < postersData.length) {
+          currentPage++;
+          displayPosters(postersData);
+        }
+      }
+  
+      function previousPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          displayPosters(postersData);
+        }
+      }
+  
+      // Debounced search function
+      function debouncedSearch() {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(searchPosters, 300); // 300ms delay
+      }
+  
+      // Search posters by title
+      function searchPosters() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const filteredPosters = postersData.filter(poster => poster.title.toLowerCase().includes(query));
+  
+        if (filteredPosters.length === 0) {
+          document.getElementById('posterContainer').innerHTML = '<p style="color: white; text-align: center; font-size: 1.5rem;">No movies found. Please refine your search.</p>';
+        } else {
+          currentPage = 1; // Reset to first page
+          displayPosters(filteredPosters);
+        }
+      }
+    </script>
+  </body>
+  
