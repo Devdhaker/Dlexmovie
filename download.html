@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Posters - Dlex Movie</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #1e1e2f;
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .download-container {
+      max-width: 800px;
+      text-align: center;
+      padding: 20px;
+      background-color: #262531;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .download-btn {
+      margin-top: 10px;
+      background-color: #f3c614;
+      color: #000;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .download-btn:hover {
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="download-container">
+    <h1 id="posterTitle">Download Your Poster</h1>
+    <img id="posterImage" src="" alt="Poster Image">
+    <br>
+    <button class="download-btn" id="downloadButton">Download Poster</button>
+  </div>
+
+  <script>
+    // Get query parameters from URL
+    const params = new URLSearchParams(window.location.search);
+    const imageUrl = params.get('image');
+    const title = params.get('title');
+    const downloadLink = params.get('link');
+
+    // Set poster title and image
+    document.getElementById('posterTitle').textContent = title;
+    document.getElementById('posterImage').src = imageUrl;
+
+    // Handle download button click
+    document.getElementById('downloadButton').addEventListener('click', () => {
+      if (downloadLink) {
+        window.open(downloadLink, '_blank'); // Redirect to download link
+      } else {
+        alert('Download link not available!');
+      }
+    });
+  </script>
+</body>
+</html>
