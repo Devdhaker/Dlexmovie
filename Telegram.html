@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Telegram Information & Join Button</title>
+  <title>Premium Join Telegram Buttons</title>
   <style>
     /* बेस स्टाइलिंग */
     body {
@@ -11,32 +11,36 @@
       padding: 0;
       background: linear-gradient(135deg, #1f1c2c, #928dab);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #fff;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      height: 100vh;
     }
     
+    h1 {
+      color: white;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
     /* प्रीमियम बटन स्टाइल */
     .telegram-btn {
       display: inline-block;
-      background: linear-gradient(45deg, #0088cc, #00c6ff);
       color: #fff;
-      padding: 20px 40px;
-      font-size: 24px;
+      padding: 15px 35px;
+      font-size: 22px;
       text-align: center;
       border-radius: 12px;
       text-decoration: none;
       font-weight: bold;
       letter-spacing: 1px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s, box-shadow 0.3s;
+      margin: 10px;
       position: relative;
       overflow: hidden;
-      margin-top: 50px;
     }
-    
+
     /* एनिमेटेड ग्लो इफेक्ट */
     .telegram-btn::before {
       content: "";
@@ -51,7 +55,7 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-    
+
     @keyframes shine {
       0% {
         transform: translateX(0) translateY(0);
@@ -60,69 +64,42 @@
         transform: translateX(50%) translateY(50%);
       }
     }
-    
+
     .telegram-btn:hover {
       transform: scale(1.05);
       box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
     }
-    
+
     .telegram-btn:hover::before {
       opacity: 1;
     }
-    
-    /* Telegram जानकारी सेक्शन */
-    .telegram-info {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 30px;
-      border-radius: 12px;
-      margin: 40px 20px;
-      max-width: 800px;
-      text-align: left;
-      line-height: 1.6;
-    }
-    
-    .telegram-info h2 {
-      margin-top: 0;
-      font-size: 28px;
-      border-bottom: 2px solid #0088cc;
-      padding-bottom: 10px;
-    }
-    
+
+    /* अलग-अलग बटन कलर */
+    .btn-1 { background: linear-gradient(45deg, #0088cc, #00c6ff); }
+    .btn-2 { background: linear-gradient(45deg, #ff416c, #ff4b2b); }
+    .btn-3 { background: linear-gradient(45deg, #8e44ad, #c0392b); }
+    .btn-4 { background: linear-gradient(45deg, #27ae60, #2ecc71); }
+    .btn-5 { background: linear-gradient(45deg, #ff9a8b, #ff6a88, #ff99ac); }
+    .btn-6 { background: linear-gradient(45deg, #1e3c72, #2a5298); }
+
     /* Responsive टेक्स्ट साइजिंग */
     @media (max-width: 600px) {
       .telegram-btn {
-        font-size: 20px;
-        padding: 15px 30px;
-      }
-      
-      .telegram-info {
-        padding: 20px;
-      }
-      
-      .telegram-info h2 {
-        font-size: 24px;
+        font-size: 18px;
+        padding: 12px 25px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Join Telegram Button -->
-  <a href="https://t.me/YOUR_TELEGRAM_LINK" target="_blank" class="telegram-btn">
-    Join Telegram
-  </a>
-  
-  <!-- Telegram Information Section -->
-  <div class="telegram-info">
-    <h2>Telegram के बारे में जानकारी</h2>
-    <p>
-      Telegram एक तेज, सुरक्षित और उपयोग में आसान मैसेजिंग एप्लिकेशन है। इसमें एन्क्रिप्टेड चैट, 
-      ग्रुप चैट, चैनल और फ़ाइल शेयरिंग जैसी सुविधाएं हैं। Telegram का उद्देश्य यूज़र्स को निजी और 
-      सुरक्षित संचार प्रदान करना है, जिससे आप अपने दोस्तों, परिवार और समुदाय के साथ आसानी से जुड़ सकें।
-    </p>
-    <p>
-      यदि आप अधिक जानकारी चाहते हैं या किसी विशेष विषय पर चर्चा करना चाहते हैं, तो कृपया हमारे 
-      Telegram ग्रुप में शामिल हों।
-    </p>
-  </div>
+  <h1>Join Our Telegram Channels</h1>
+
+  <a href="https://t.me/YOUR_TELEGRAM_LINK_1" target="_blank" class="telegram-btn btn-1">🌹भाभी वीडियो ज्वाइन करे 🔗</a>
+  <a href="https://t.me/YOUR_TELEGRAM_LINK_2" target="_blank" class="telegram-btn btn-2">🥰 देसी वीडियो ज्वाइन करे 🌹</a>
+  <a href="https://t.me/YOUR_TELEGRAM_LINK_3" target="_blank" class="telegram-btn btn-3">🔥 वायरल वीडियो लिंक 😍</a>
+  <a href="https://t.me/YOUR_TELEGRAM_LINK_4" target="_blank" class="telegram-btn btn-4">English Video Link 😎</a>
+  <a href="https://t.me/YOUR_TELEGRAM_LINK_5" target="_blank" class="telegram-btn btn-5">Indian न्यू वीडियो 💦</a>
+  <a href="https://t.me/YOUR_TELEGRAM_LINK_6" target="_blank" class="telegram-btn btn-6">सभी तरह की वेबसरीज वीडियो 📍</a>
+
 </body>
 </html>
